@@ -1,0 +1,38 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.smartlink">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="collective.smartlink.interfaces.ICollectiveSmartlinkLayer"
+      />
+
+  <!-- custom add and edit form -->
+  <browser:page
+    for="plone.app.contenttypes.interfaces.ILink"
+    name="edit"
+    class=".form.EditView"
+    permission="cmf.ModifyPortalContent"
+    layer="collective.smartlink.interfaces.ICollectiveSmartlinkLayer"
+    />
+
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         collective.smartlink.interfaces.ICollectiveSmartlinkLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".form.AddView"
+    name="Link"
+    />
+
+  <!-- Publish static files -->
+  <browser:resourceDirectory
+      name="collective.smartlink"
+      directory="static"
+      />
+
+</configure>
