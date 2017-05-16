@@ -7,7 +7,6 @@
 
   <adapter
      name="getRemoteUrl"
-     provides="collective.smartlink.behaviors.interfaces.ISmartLinkExtension"
      factory=".indexers.getRemoteUrl"/>
 
   <!-- <adapter name="getIcon" factory=".indexers.getIcon" /> -->

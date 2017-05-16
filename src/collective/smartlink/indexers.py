@@ -1,12 +1,25 @@
 # -*- coding: utf-8 -*-
-from plone.app.contenttypes.interfaces import ILink
 from plone.indexer.decorator import indexer
 from plone.app.contenttypes.utils import replace_link_variables_by_paths
 from plone.dexterity.interfaces import IDexterityContent
+from collective.smartlink.behaviors.interfaces import ISmartLinkMarker
+from zope.schema import getFieldsInOrder
+from plone.behavior.interfaces import IBehaviorAssignable
 
-@indexer(ISmartLinkExtension)
-def getRemoteUrl(obj):
-    import pdb; pdb.set_trace()
+
+from Acquisition import aq_inner
+from plone.memoize.view import memoize
+from Products.Five import BrowserView
+from zc.relation.interfaces import ICatalog
+from zope.component import getUtility
+from zope.intid.interfaces import IIntIds
+from zope.security import checkPermission
+from Products.CMFCore.utils import getToolByName
+from Products.Archetypes.interfaces import referenceable
+
+
+@indexer(ISmartLinkMarker)
+def getRemoteUrl(obj):    
     url = obj.internal_link or obj.remoteUrl
     return replace_link_variables_by_paths(obj, url)
 

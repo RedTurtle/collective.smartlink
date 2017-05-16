@@ -46,7 +46,6 @@ setup(
         'plone.api',
         'setuptools',
         'z3c.jbot',
-        'plone.app.relationfield',
     ],
     extras_require={
         'test': [
