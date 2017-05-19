@@ -33,14 +33,6 @@ class ISmartLinkExtension(model.Schema):
         vocabulary='plone.app.vocabularies.Catalog'
     )
 
-    favicon = NamedBlobImage(
-        title=_(u'label_smartlink_favicon', default=u'Icon'),
-        required=False,
-        description=_(u'help_smartlink_favicon',
-                        default=(u'You can customize there the content icon. '
-                                 u'You can use this for provide the icon of the remote site')),
-    )
-
 
 class ISmartLinkMarker(ILink):
     """ """

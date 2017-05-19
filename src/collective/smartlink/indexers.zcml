@@ -9,6 +9,4 @@
      name="getRemoteUrl"
      factory=".indexers.getRemoteUrl"/>
 
-  <!-- <adapter name="getIcon" factory=".indexers.getIcon" /> -->
-
 </configure>

@@ -31,11 +31,6 @@ class EditForm(BaseForm, DefaultEditForm):
         super(EditForm, self).updateWidgets()
         self.widgets['remoteUrl'].required = False
 
-    #     self.widgets['IDublinCore.effective'].required = True
-    #     self.widgets['remoteUrl'].mode = 'hidden'
-    #     self.widgets['IDublinCore.effective'].field.description = _(
-    #         'link_normativa_date_help', default="Law publication date")
-
     @button.buttonAndHandler(dmf(u'Save'), name='save')
     def handleApply(self, action):
         data, errors = self.extractData()
@@ -64,9 +59,7 @@ class AddForm(BaseForm, DefaultAddForm):
     def updateWidgets(self):
         super(AddForm, self).updateWidgets()
         self.widgets['remoteUrl'].required = False
-        # self.widgets['remoteUrl'].mode = 'hidden'
-        # self.widgets['IDublinCore.effective'].field.description = _(
-        #     'link_normativa_date_help', default="Law publication date")
+        
 
     @button.buttonAndHandler(dmf('Save'), name='save')
     def handleAdd(self, action):
