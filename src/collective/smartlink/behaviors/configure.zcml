@@ -8,9 +8,7 @@
     title="Additional fields for a link object"
     description="We want to add some fields for links objects."
     provides=".interfaces.ISmartLinkExtension"
-    marker=".interfaces.ISmartLinkMarker"
     for="plone.dexterity.interfaces.IDexterityContent"
-    factory=".interfaces.SmartLinkExtension"
-  />
+    />
 
 </configure>
