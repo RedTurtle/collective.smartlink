@@ -8,7 +8,6 @@ from collective.smartlink import logger
 
 @indexer(ISmartLinkExtension)
 def getRemoteUrl(obj):
-    import pdb; pdb.set_trace()
     if obj.internal_link and obj.remoteUrl and obj.remoteUrl != "http://":
         logger.warning(
             'for the %s link there are both internal:%s and external:%s url',
