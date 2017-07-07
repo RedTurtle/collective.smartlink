@@ -4,7 +4,7 @@ from plone.app.contenttypes.interfaces import ILink
 from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
-from plone.directives import form
+from plone.autoform import directives
 from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from z3c.relationfield.schema import RelationChoice
@@ -28,7 +28,7 @@ class ISmartLinkExtension(model.Schema):
         required=False,
         vocabulary='plone.app.vocabularies.Catalog'
     )
-    form.widget(
+    directives.widget(
         'internal_link',
         RelatedItemsFieldWidget,
         vocabulary='plone.app.vocabularies.Catalog'
