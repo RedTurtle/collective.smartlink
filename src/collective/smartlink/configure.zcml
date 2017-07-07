@@ -44,6 +44,12 @@
       handler=".setuphandlers.uninstall">
   </genericsetup:importStep>
 
+  <!-- <z3c:widgetTemplate
+      mode="input"
+      layer=".interfaces.IPloneFormLayer"
+      template="templates/link_input.pt"
+      /> -->
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="collective.smartlink-hiddenprofiles" />

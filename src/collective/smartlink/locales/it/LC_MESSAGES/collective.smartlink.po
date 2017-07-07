@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-05-10 08:53+0000\n"
+"POT-Creation-Date: 2017-07-07 12:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,42 +14,46 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../behaviors/configure.zcml:14
+#: ../behaviors/configure.zcml:12
 msgid "Additional fields for a link object"
 msgstr ""
 
-#: ../configure.zcml:22
+#: ../configure.zcml:23
 msgid "Installs the collective.smartlink add-on."
 msgstr ""
 
-#: ../configure.zcml:37
+#: ../configure.zcml:38
 msgid "Uninstalls the collective.smartlink add-on."
 msgstr ""
 
-#: ../behaviors/configure.zcml:14
+#: ../browser/configure.zcml:16
+msgid "View Link"
+msgstr ""
+
+#: ../behaviors/configure.zcml:12
 msgid "We want to add some fields for links objects."
 msgstr ""
 
-#: ../configure.zcml:22
+#: ../configure.zcml:23
 msgid "collective.smartlink"
 msgstr ""
 
-#. Default: "You can customize there the content icon. You can use this for provide the icon of the remote site"
-#: ../behaviors/interfaces.py:63
-msgid "help_smartlink_favicon"
-msgstr "Puoi personalizzare qui l'icona del contenuto. Puoi usare questa funzionalità per fornire l'icona del sito remoto"
+#. Default: "You must select an internal link or enter an external link. You cannot have both."
+#: ../browser/form.py:23
+msgid "error_internallink_externallink_doubled"
+msgstr "Devi selezionare un link interno o uno esterno. Non e' posssibile avere entrambi."
 
 #. Default: "Browse to find the internal page to which you wish to link. If this field is used, then any entry in the external link field will be ignored. You cannot have both an internal and external link."
-#: ../behaviors/interfaces.py:54
+#: ../behaviors/interfaces.py:24
 msgid "help_smartlink_internallink"
 msgstr "Sfoglia per trovare la pagina interna che si desidera linkare. Se questo campo e' usato, il campo del link esterno verra' ignorato. Non e' possibile avere sia un collegamento interno che uno esterno"
 
-#. Default: "Icon"
-#: ../behaviors/interfaces.py:61
-msgid "label_smartlink_favicon"
-msgstr "Icona"
+#. Default: "The link is used almost verbatim, relative links become absolute and the strings \"${navigation_root_url}\" and \"${portal_url}\" get replaced with the real navigation_root_url or portal_url. If in doubt which one to use, please use navigation_root_url."
+#: ../schema/link.xml
+msgid "label_remoteurl_description"
+msgstr "Il collegamento viene utilizzato come e' scritto, i link relativi diventano assoluti e le stringhe \"${navigation_root_url}\" e \"${portal_url}\" vengono sotituite con i valori delle variabili navigation_root_url oppure portal_url. Nel dubbio su quale usare, per favore usa navigation_root_url."
 
 #. Default: "Internal link"
-#: ../behaviors/interfaces.py:52
+#: ../behaviors/interfaces.py:23
 msgid "label_smartlink_internallink"
 msgstr "Link interno"
