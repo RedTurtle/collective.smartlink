@@ -10,7 +10,7 @@ collective.smartlink
 Features
 --------
 
-- Add an extra field to set internal link as reference.
+- Adds an extra field to set internal link as reference.
 - If the link is broken anonymous users are redirect to the site root.
 
 
