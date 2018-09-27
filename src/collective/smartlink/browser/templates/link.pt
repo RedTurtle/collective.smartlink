@@ -22,8 +22,15 @@
   <p tal:define="portal_url portal_state/portal_url;
                  navigation_root_url portal_state/navigation_root_url;
                  url view/absolute_target_url">
-    <span i18n:translate="link_address">The link address is:</span>
-    <a tal:attributes="href url" tal:content="url">remote url</a>
+    <tal:has_url tal:condition="url">
+      <span i18n:translate="link_address">The link address is:</span>
+      <a tal:attributes="href url" tal:content="url">remote url</a>
+    </tal:has_url>
+    <tal:hasnot_url tal:condition="python: not url">
+      <span i18n:translate="link_not_found" i18n:domain="collective.smartlink" tal:omit-tag="">
+        The link is not available anymore.
+      </span>
+    </tal:hasnot_url>
   </p>
 </metal:block>
 </metal:content-core>
