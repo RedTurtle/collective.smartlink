@@ -14,15 +14,6 @@ Features
 - If the link is broken anonymous users are redirect to the site root.
 
 
-
-Translations
-------------
-
-This product has been translated into
-
-- Italian
-
-
 Installation
 ------------
 
