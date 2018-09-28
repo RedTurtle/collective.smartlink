@@ -5,7 +5,7 @@ Changelog
 0.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed view when link is broken [daniele]
 
 
 0.1.0 (2017-09-13)
