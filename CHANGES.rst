@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.1 (unreleased)
+0.1.1 (2018-09-28)
 ------------------
 
 - Fixed view when link is broken [daniele]
