@@ -5,7 +5,10 @@ Changelog
 0.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Removed override for Link add/edit forms
+  [arsenico13]
+- Removed changes to the link schema (deleted link.xml)
+  [arsenico13]
 
 
 0.1.1 (2018-09-28)
