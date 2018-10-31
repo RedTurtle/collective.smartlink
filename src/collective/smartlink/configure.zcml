@@ -11,8 +11,8 @@
 
   <include package=".browser" />
   <include package=".behaviors" />
-  <!-- <include package=".events" /> -->
-  <include file="indexers.zcml" />
+  <include package=".transform" />
+
 
   <genericsetup:registerProfile
       name="default"
