@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from App.config import getConfiguration
+from collective.smartlink.interfaces import ICollectiveSmartlinkLayer
 from lxml import etree
+from lxml.html import fromstring
 from os import environ
 from plone.app.theming.interfaces import IThemingLayer
 from plone.app.theming.utils import compileThemeTransform
@@ -9,12 +11,13 @@ from plone.app.theming.utils import getParser
 from plone.app.theming.utils import prepareThemeParameters
 from plone.app.theming.utils import theming_policy
 from plone.app.theming.zmi import patch_zmi
+from plone.app.uuid.utils import uuidToURL
 from plone.transformchain.interfaces import ITransform
+from repoze.xmliter.serializer import XMLSerializer
 from repoze.xmliter.utils import getHTMLSerializer
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
-from collective.smartlink.interfaces import ICollectiveSmartlinkLayer
 
 
 import logging
@@ -60,7 +63,6 @@ class UidLinkTransform(object):
         return True
 
     def setupTransform(self, runtrace=False):
-        import pdb; pdb.set_trace()
         debug_mode = self.develop_theme()
         policy = theming_policy(self.request)
 
@@ -121,7 +123,6 @@ class UidLinkTransform(object):
             return None
 
     def transformBytes(self, result, encoding):
-        import pdb; pdb.set_trace()
         try:
             result = result.decode(encoding)
         except UnicodeDecodeError:
@@ -140,6 +141,13 @@ class UidLinkTransform(object):
     def transformIterable(self, result, encoding):
         """Apply the transform if required
         """
-        import pdb; pdb.set_trace()
+        if isinstance(result, XMLSerializer):
+            root = result.tree.getroot()
+            for (element, attribute, link, pos) in root.iterlinks():
+                if 'resolveuid' in link:
+                    uuid_value = link.split('/')[-1]
+                    url = uuidToURL(uuid_value)
+                    if url:
+                        element.set(attribute, url)
 
         return result
