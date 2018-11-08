@@ -9,9 +9,10 @@
 
   <includeDependencies package="." />
 
-  <include package=".browser" />
   <include package=".behaviors" />
+  <include package=".browser" />
   <include package=".transform" />
+  <include package=".upgrades" />
 
 
   <genericsetup:registerProfile
