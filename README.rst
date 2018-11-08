@@ -10,7 +10,10 @@ collective.smartlink
 Features
 --------
 
-- Adds an extra field to set internal link as reference.
+- Adds an output filter that changes all the internal link in a page (the ones
+  with `resolveuid`) to the absolute url of that plone object.
+- Adds the `ILeadImage` behavior to the Link content type so you can add an
+  image to a link object.
 - If the link is broken anonymous users are redirect to the site root.
 
 

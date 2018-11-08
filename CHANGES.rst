@@ -5,11 +5,16 @@ Changelog
 0.2.0 (unreleased)
 ------------------
 
+Upgrade step required.
+
 - Removed override for Link add/edit forms
   [arsenico13]
 - Removed changes to the link schema (deleted link.xml)
   [arsenico13]
 - Removed indexers
+  [arsenico13]
+- NEW: Added an output filter that changes every `resolveuid` for an internal
+  link found in a page with the absolute_url of that plone object.
   [arsenico13]
 
 
