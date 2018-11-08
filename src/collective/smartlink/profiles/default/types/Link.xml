@@ -5,6 +5,7 @@
  <property name="title" i18n:translate="">Link</property>
  <!--  Enabled behaviors  -->
  <property name="behaviors" purge="false">
+  <element value="collective.smartlink.behaviors.interfaces.ISmartLinkExtension"/>
   <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
- </property>
+</property>
 </object>
