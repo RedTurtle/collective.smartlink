@@ -27,11 +27,14 @@ class LinkRedirectView(Base):
         if self.context.internal_link:
             if not self.context.internal_link.to_object:
                 if not can_edit:
-		    api.portal.show_message(
-				    message=_("link_not_found"),
-				    request=self.request,
-				    type='warning')
-                    return self.request.response.redirect(api.portal.get().absolute_url())
+                    api.portal.show_message(
+                        message=_("link_not_found"),
+                        request=self.request,
+                        type='warning',
+                    )
+                    return self.request.response.redirect(
+                        api.portal.get().absolute_url()
+                    )
                 else:
                     return
             return self.context.internal_link.to_object.absolute_url()
