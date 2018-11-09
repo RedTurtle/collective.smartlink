@@ -2,6 +2,7 @@
 
 from plone.dexterity.interfaces import IDexterityFTI
 from zope.component import queryUtility
+from remove_internal_link import fix_internal_link_field
 
 import logging
 
@@ -31,3 +32,5 @@ def to_1100(context):
 
     logger.info('Changing model_file for Link type.')
     fti._updateProperty('model_file', 'plone.app.contenttypes.schema:link.xml')
+
+    fix_internal_link_field(context)
