@@ -17,7 +17,8 @@ from zope.interface import provider
 @provider(IFormFieldProvider)
 @implementer(ILink)
 class ISmartLinkExtension(model.Schema):
-
+    """
+    """
     # form.widget(internal_link=ContentTreeFieldWidget)
     # internal_link = RelationChoice(
     #     title=_(u'label_smartlink_internallink', default='Internal link'),
