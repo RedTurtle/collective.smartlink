@@ -14,7 +14,6 @@ Features
   with `resolveuid`) to the absolute url of that plone object.
 - Adds the `ILeadImage` behavior to the Link content type so you can add an
   image to a link object.
-- If the link is broken anonymous users are redirect to the site root.
 
 
 Installation
