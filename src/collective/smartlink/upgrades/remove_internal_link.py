@@ -36,7 +36,10 @@ def fix_internal_link_field(context):
 
             linked_obj = link_obj.internal_link.to_object
             uuid = get_uuid(linked_obj)
-            link_obj.remoteUrl = u'${portal_url}/resolveuid/{}'.format(uuid)
+            link_obj.remoteUrl = u'${}/resolveuid/{}'.format(
+                '{portal_url}',
+                uuid,
+            )
             link_obj.internal_link = None
 
             objects_changed += 1
