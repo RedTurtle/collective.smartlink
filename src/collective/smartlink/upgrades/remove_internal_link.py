@@ -32,7 +32,10 @@ def fix_internal_link_field(context):
         # parte dei bottoni. Se un oggetto ha un link interno NON può avere
         # anche un link esterno.
         if link_obj.internal_link and not link_obj.remoteUrl:
-            logger.info('---\nLink: {}\n'.format(link_obj.absolute_url_path()))
+            logger.info('---Link: {} | punta a: {}\n'.format(
+                link_obj.absolute_url_path()),
+                link_obj.internal_link.to_path,
+            )
 
             linked_obj = link_obj.internal_link.to_object
             uuid = get_uuid(linked_obj)
