@@ -25,6 +25,7 @@ def fix_internal_link_field(context):
     )
 
     objects_changed = 0
+    logger.info("Found {} Link objects".format(len(link_brains)))
 
     for brain in link_brains:
         link_obj = brain.getObject()
@@ -33,9 +34,9 @@ def fix_internal_link_field(context):
         # anche un link esterno.
         if link_obj.internal_link and not link_obj.remoteUrl:
             logger.info('---Link: {} | punta a: {}\n'.format(
-                link_obj.absolute_url_path()),
+                link_obj.absolute_url_path(),
                 link_obj.internal_link.to_path,
-            )
+            ))
 
             linked_obj = link_obj.internal_link.to_object
             uuid = get_uuid(linked_obj)
