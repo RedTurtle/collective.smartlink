@@ -24,6 +24,7 @@ import logging
 
 
 LOGGER = logging.getLogger('collective.smartlink.transform')
+LOGGER.setLevel(logging.WARNING)
 
 
 @implementer(ITransform)
@@ -147,6 +148,13 @@ class UidLinkTransform(object):
                 if 'resolveuid' in link:
                     uuid_value = link.split('/')[-1]
                     url = uuidToURL(uuid_value)
+                    LOGGER.info("\n---")
+                    LOGGER.info("link found in page: {}".format(link))
+                    LOGGER.info(
+                        "link extracted uuid_value: {}".format(uuid_value)
+                    )
+                    LOGGER.info("url: {}".format(url))
+                    LOGGER.info("\n---")
                     if url:
                         element.set(attribute, url)
 
