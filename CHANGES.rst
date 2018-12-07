@@ -9,7 +9,9 @@ Upgrade step required.
 
 - Removed override for Link add/edit forms
   [arsenico13]
-- Removed changes to the link schema (deleted link.xml)
+- Removed changes to the link schema (the 'schema' folder is still in the
+  product just for avoid errors while upgrading: will be removed at the next
+  version of the add-on)
   [arsenico13]
 - Removed indexers
   [arsenico13]
