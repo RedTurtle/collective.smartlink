@@ -25,6 +25,7 @@ def fix_internal_link_field(context):
     )
 
     objects_changed = 0
+    total_changed = 0
     logger.info("Found {} Link objects".format(len(link_brains)))
 
     for brain in link_brains:
@@ -47,6 +48,7 @@ def fix_internal_link_field(context):
             link_obj.internal_link = None
 
             objects_changed += 1
+            total_changed += 1
             if objects_changed > 10:
                 try:
                     print "Partial Commit..."
@@ -57,5 +59,5 @@ def fix_internal_link_field(context):
                         u"Error while committing transaction.")
                     logger.error(u"{}".format(e))
                 objects_changed = 0
-
+    logger.info("Changed a total of {} Link objects".format(total_changed))
     transaction.commit()
