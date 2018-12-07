@@ -16,6 +16,13 @@ Features
   image to a link object.
 
 
+Notes on upgrading this add-on
+------------------------------
+
+If you come from a `0.1.x` version, make sure to upgrade to the `2.0` and run
+the upgrade step before upgrading further to avoid issues.
+
+
 Installation
 ------------
 
