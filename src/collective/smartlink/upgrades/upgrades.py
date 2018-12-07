@@ -20,16 +20,6 @@ def to_1100(context):
     if not fti:
         return
 
-    # Change the behaviors for Link content type
-    # behaviors = [
-    #     it for it in fti.behaviors
-    #     if 'collective.smartlink.behaviors.interfaces.ISmartLinkExtension'
-    #     not in it]
-    #
-    # logger.info('Removing ISmartLinkExtension behavior from Link type.')
-    # behaviors = tuple(set(behaviors))
-    # fti._updateProperty('behaviors', behaviors)
-
     logger.info('Changing model_file for Link type.')
     fti._updateProperty('model_file', 'plone.app.contenttypes.schema:link.xml')
 
