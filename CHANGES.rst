@@ -21,6 +21,9 @@ Upgrade step required.
 - NEW: No more 'internal_link' field. Right now, all is done with the field
   `remoteUrl` as the standard Plone Link type.
   [arsenico13]
+- link.pt: when the link is internal, the template shows the absolute url to
+  the linked object. It's more human readable than the `resolveuid` link...
+  [arsenico13]
 
 
 0.1.1 (2018-09-28)
