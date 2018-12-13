@@ -46,6 +46,7 @@ def fix_internal_link_field(context):
                 uuid,
             )
             link_obj.internal_link = None
+            link_obj.reindexObject(idxs=["remoteUrl"])
 
             objects_changed += 1
             total_changed += 1
