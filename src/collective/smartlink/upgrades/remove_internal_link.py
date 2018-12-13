@@ -33,7 +33,7 @@ def fix_internal_link_field(context):
         # Facciamo un controllo che dovrebbe essere inutile ma stiamo dalla
         # parte dei bottoni. Se un oggetto ha un link interno NON può avere
         # anche un link esterno.
-        if link_obj.internal_link and not link_obj.remoteUrl:
+        if link_obj.internal_link:
             logger.info('---Link: {} | punta a: {}\n'.format(
                 link_obj.absolute_url_path(),
                 link_obj.internal_link.to_path,
