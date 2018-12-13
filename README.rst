@@ -14,6 +14,9 @@ Features
   with `resolveuid`) to the absolute url of that plone object.
 - Adds the `ILeadImage` behavior to the Link content type so you can add an
   image to a link object.
+- If the link is internal to the site, the page template of the actual link
+  (if you have the right permissions) shows the absolute url of the linked
+  object.
 
 
 Notes on upgrading this add-on
