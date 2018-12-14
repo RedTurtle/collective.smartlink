@@ -11,8 +11,10 @@ Changelog
   Link objects points to a deleted resource.
   When you run the upgrade, check the logs for more info.
   [arsenico13]
-- Changes to link.pt to show a message if the link is broken (and you have
-  permissions to edit)
+- Changes to link.pt to show a message if the internal link is broken and user
+  can edit
+  [arsenico13]
+- Raise 404 if an internal link is broken and user can't edit
   [arsenico13]
 
 
