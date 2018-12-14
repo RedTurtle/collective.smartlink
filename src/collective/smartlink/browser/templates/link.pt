@@ -20,8 +20,17 @@
     </span>
   </div>
   <p>
-    <span i18n:translate="link_address">The link address is:</span>
-    <a tal:attributes="href view/absolute_target_url" tal:content="view/absolute_target_url">remote url</a>
+    <tal:link tal:define="linked_obj view/absolute_target_url">
+      <tal:doesntexists tal:condition="not:linked_obj">
+        <span tal:omit-tag="" i18n:translate="broken_link_message">
+          Broken link! The linked resource is missing.
+        </span>
+      </tal:doesntexists>
+      <tal:workingLink tal:condition="linked_obj">
+        <span i18n:translate="link_address">The link address is:</span>
+        <a tal:attributes="href view/absolute_target_url" tal:content="linked_obj">remote url</a>
+      </tal:workingLink>
+    </tal:link>
   </p>
 </metal:block>
 </metal:content-core>

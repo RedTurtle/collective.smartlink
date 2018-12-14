@@ -15,6 +15,11 @@ class LinkRedirectView(Base):
         if self.context.remoteUrl.startswith('$'):
             # searching for the linked object
             obj = api.content.get(UID=url.split('/')[-1])
-            return obj.absolute_url()
+
+            if obj:
+                return obj.absolute_url()
+            else:
+                # Broken Link
+                return None
         else:
             return super(LinkRedirectView, self).absolute_target_url()

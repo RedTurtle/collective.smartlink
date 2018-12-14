@@ -11,6 +11,9 @@ Changelog
   Link objects points to a deleted resource.
   When you run the upgrade, check the logs for more info.
   [arsenico13]
+- Changes to link.pt to show a message if the link is broken (and you have
+  permissions to edit)
+  [arsenico13]
 
 
 0.2.0 (2018-12-13)
