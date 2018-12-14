@@ -2,10 +2,15 @@ Changelog
 =========
 
 
-0.2.1 (unreleased)
+1.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Version bump that needed to be done in the previous release :)
+  [arsenico13]
+- Fixed the upgrade step from 1000 to 1100: the upgrade now works even if the
+  Link objects points to a deleted resource.
+  When you run the upgrade, check the logs for more info.
+  [arsenico13]
 
 
 0.2.0 (2018-12-13)
