@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.0 (unreleased)
+1.0.0 (2018-12-14)
 ------------------
 
 - Version bump that needed to be done in the previous release :)
