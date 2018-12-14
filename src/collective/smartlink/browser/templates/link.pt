@@ -22,7 +22,9 @@
   <p>
     <tal:link tal:define="linked_obj view/absolute_target_url">
       <tal:doesntexists tal:condition="not:linked_obj">
-        <span tal:omit-tag="" i18n:translate="broken_link_message">
+        <span tal:omit-tag=""
+          i18n:domain="collective.smartlink"
+          i18n:translate="broken_link_message">
           Broken link! The linked resource is missing.
         </span>
       </tal:doesntexists>
