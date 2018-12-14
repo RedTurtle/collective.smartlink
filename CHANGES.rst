@@ -16,6 +16,8 @@ Changelog
   [arsenico13]
 - Raise 404 if an internal link is broken and user can't edit
   [arsenico13]
+- Reviewed some italian translations
+  [arsenico13]
 
 
 0.2.0 (2018-12-13)
