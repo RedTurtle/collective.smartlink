@@ -14,7 +14,7 @@ def fix_internal_link_field(context):
     Serve per togliere il contenuto del campo 'internal_link' e metterlo
     nel campo standard 'remoteUrl'.
 
-    Si spazzola tutti i link del sito e li corregge.
+    Si spazzola tutti i link del sito che hanno un internal_link e li corregge.
     """
     logger.info('Fixing the internal_link field for all the Link objects.')
 
@@ -26,6 +26,8 @@ def fix_internal_link_field(context):
 
     objects_changed = 0
     total_changed = 0
+    brokenlink = []
+
     logger.info("Found {} Link objects".format(len(link_brains)))
 
     for brain in link_brains:
@@ -34,13 +36,19 @@ def fix_internal_link_field(context):
         # parte dei bottoni. Se un oggetto ha un link interno NON può avere
         # anche un link esterno.
         if link_obj.internal_link:
-            logger.info('---Link: {} | punta a: {}\n'.format(
+            logger.info('---Link: {} | points to: {}\n'.format(
                 link_obj.absolute_url_path(),
                 link_obj.internal_link.to_path,
             ))
 
             linked_obj = link_obj.internal_link.to_object
-            uuid = get_uuid(linked_obj)
+
+            if linked_obj:
+                uuid = get_uuid(linked_obj)
+            else:
+                uuid = u'notfound'
+                brokenlink.append(link_obj.absolute_url_path())
+
             link_obj.remoteUrl = u'${}/resolveuid/{}'.format(
                 '{portal_url}',
                 uuid,
@@ -61,4 +69,8 @@ def fix_internal_link_field(context):
                     logger.error(u"{}".format(e))
                 objects_changed = 0
     logger.info("Changed a total of {} Link objects".format(total_changed))
+    if brokenlink:
+        logger.info("Broken links found: ")
+        for broken in brokenlink:
+            logger.info(broken)
     transaction.commit()
