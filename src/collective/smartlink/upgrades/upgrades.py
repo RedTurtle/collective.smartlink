@@ -2,7 +2,7 @@
 
 from plone.dexterity.interfaces import IDexterityFTI
 from zope.component import queryUtility
-from remove_internal_link import fix_internal_link_field
+from .remove_internal_link import fix_internal_link_field
 
 import logging
 
