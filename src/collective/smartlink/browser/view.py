@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+
+from collective.smartlink import _
 from plone import api
 from plone.app.contenttypes.browser.link_redirect_view import LinkRedirectView as Base  # noqa
 from plone.app.contenttypes.browser.link_redirect_view import NON_RESOLVABLE_URL_SCHEMES  # noqa
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from zExceptions import NotFound
 
 
 class LinkRedirectView(Base):
@@ -23,10 +24,17 @@ class LinkRedirectView(Base):
             if obj:
                 return obj.absolute_url()
             else:
-                # Broken Link
+                # Broken Link or resource not published
                 if can_edit:
                     return None
                 else:
-                    raise NotFound()
+                    api.portal.show_message(
+                        message=_("link_not_found"),
+                        request=self.request,
+                        type='warning'
+                    )
+                    return self.request.response.redirect(
+                        api.portal.get().absolute_url()
+                    )
         else:
             return super(LinkRedirectView, self).absolute_target_url()

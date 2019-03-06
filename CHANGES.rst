@@ -5,7 +5,9 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- If the link points to a deleted or an unpublished resource, you get redirected
+  to the home page and a warning message is displayed (#15734).
+  [arsenico13]
 
 
 1.0.0 (2018-12-14)

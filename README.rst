@@ -17,6 +17,8 @@ Features
 - If the link is internal to the site, the page template of the actual link
   (if you have the right permissions) shows the absolute url of the linked
   object.
+- If the link points to a deleted or an unpublished resource, you get redirected
+  to the home page and a warning message is displayed.
 
 
 Notes on upgrading this add-on
