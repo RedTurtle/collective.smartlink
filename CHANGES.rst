@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.0.1 (2019-03-14)
 ------------------
 
 - If the link points to a deleted or an unpublished resource, you get redirected
