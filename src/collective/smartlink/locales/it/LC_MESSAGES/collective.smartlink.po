@@ -50,4 +50,4 @@ msgstr "Il collegamento viene utilizzato come e' scritto, i link relativi divent
 
 #: ../browser/view.py:32
 msgid "link_not_found"
-msgstr "Link errato. Risorsa mancante."
+msgstr "Link rotto: ci scusiamo per l'inconveniente, la pagina che stai tentando di consultare non esiste più"
