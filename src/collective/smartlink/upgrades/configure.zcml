@@ -13,4 +13,12 @@
       handler=".upgrades.to_1100"
       profile="collective.smartlink:default" />
 
+  <gs:upgradeStep
+      title="Upgrade collective.smartlink 1200"
+      description="collective.smartlink upgrade step"
+      source="1100"
+      destination="1200"
+      handler=".upgrades.to_1200"
+      profile="collective.smartlink:default" />
+
 </configure>

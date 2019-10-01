@@ -3,6 +3,7 @@
 from plone.dexterity.interfaces import IDexterityFTI
 from zope.component import queryUtility
 from .remove_internal_link import fix_internal_link_field
+from plone import api
 
 import logging
 
@@ -24,3 +25,10 @@ def to_1100(context):
     fti._updateProperty('model_file', 'plone.app.contenttypes.schema:link.xml')
 
     fix_internal_link_field(context)
+
+def to_1200(context):
+    """
+    """
+    logger.info('Upgrading collective.smartlink to version 1200')
+    setup = api.portal.get_tool('portal_setup')
+    setup.runImportStepFromProfile(default_profile, 'typeinfo')
