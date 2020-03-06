@@ -5,7 +5,10 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Python 3 compatibility.
+  [cekk]
+- Change behavior name plone.app.contenttypes.behaviors.leadimage.ILeadImage -> plone.leadimage
+  [cekk]
 
 
 1.0.1 (2019-03-14)

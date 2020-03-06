@@ -19,9 +19,9 @@ def fix_internal_link_field(context):
     logger.info('Fixing the internal_link field for all the Link objects.')
 
     site = api.portal.get()
-    print u"Getting all the Link objects in the site..."
+    logger.info("Getting all the Link objects in the site...")
     link_brains = site.portal_catalog.unrestrictedSearchResults(
-        portal_type=["Link"],
+        portal_type=["Link"]
     )
 
     objects_changed = 0
@@ -36,10 +36,11 @@ def fix_internal_link_field(context):
         # parte dei bottoni. Se un oggetto ha un link interno NON può avere
         # anche un link esterno.
         if link_obj.internal_link:
-            logger.info('---Link: {} | points to: {}\n'.format(
-                link_obj.absolute_url_path(),
-                link_obj.internal_link.to_path,
-            ))
+            logger.info(
+                '---Link: {} | points to: {}\n'.format(
+                    link_obj.absolute_url_path(), link_obj.internal_link.to_path
+                )
+            )
 
             linked_obj = link_obj.internal_link.to_object
 
@@ -50,8 +51,7 @@ def fix_internal_link_field(context):
                 brokenlink.append(link_obj.absolute_url_path())
 
             link_obj.remoteUrl = u'${}/resolveuid/{}'.format(
-                '{portal_url}',
-                uuid,
+                '{portal_url}', uuid
             )
             link_obj.internal_link = None
             link_obj.reindexObject(idxs=["remoteUrl"])
@@ -60,12 +60,11 @@ def fix_internal_link_field(context):
             total_changed += 1
             if objects_changed > 10:
                 try:
-                    print "Partial Commit..."
+                    logger.info("Partial Commit...")
                     transaction.commit()
-                    print "Partial Commit: OK"
+                    logger.info("Partial Commit: OK")
                 except Exception as e:
-                    logger.error(
-                        u"Error while committing transaction.")
+                    logger.error(u"Error while committing transaction.")
                     logger.error(u"{}".format(e))
                 objects_changed = 0
     logger.info("Changed a total of {} Link objects".format(total_changed))
