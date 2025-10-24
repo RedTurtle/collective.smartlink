@@ -23,6 +23,7 @@ setup(
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 5.1",
@@ -36,6 +37,7 @@ setup(
     author_email="sviluppoplone@redturtle.it",
     url="https://pypi.python.org/pypi/collective.smartlink",
     license="GPL version 2",
+    python_requires=">=3.8",
     packages=find_packages("src", exclude=["ez_setup"]),
     namespace_packages=["collective"],
     package_dir={"": "src"},

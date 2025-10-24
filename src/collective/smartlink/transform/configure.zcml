@@ -1,13 +1,14 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="plone">
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="plone"
+    >
 
-    <!-- Transform order 8860 - apply theme transform -->
-    <adapter
-        name="collective.smartlink.transform"
-        factory=".transform.UidLinkTransform"
-        />
+  <!-- Transform order 8860 - apply theme transform -->
+  <adapter
+      factory=".transform.UidLinkTransform"
+      name="collective.smartlink.transform"
+      />
 
 </configure>
