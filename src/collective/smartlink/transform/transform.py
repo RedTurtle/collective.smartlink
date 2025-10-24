@@ -2,15 +2,9 @@
 from App.config import getConfiguration
 from collective.smartlink.interfaces import ICollectiveSmartlinkLayer
 from lxml import etree
-from lxml.html import fromstring
 from os import environ
-from plone.app.theming.interfaces import IThemingLayer
 from plone.app.theming.utils import compileThemeTransform
-from plone.app.theming.utils import findContext
-from plone.app.theming.utils import getParser
-from plone.app.theming.utils import prepareThemeParameters
 from plone.app.theming.utils import theming_policy
-from plone.app.theming.zmi import patch_zmi
 from plone.app.uuid.utils import uuidToURL
 from plone.transformchain.interfaces import ITransform
 from repoze.xmliter.serializer import XMLSerializer
@@ -19,11 +13,10 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
 
-
 import logging
 
 
-LOGGER = logging.getLogger('collective.smartlink.transform')
+LOGGER = logging.getLogger("collective.smartlink.transform")
 LOGGER.setLevel(logging.WARNING)
 
 
@@ -42,24 +35,24 @@ class UidLinkTransform(object):
         self.request = request
 
     def debug_theme(self):
-        ''' Check if the theme should be debugged
+        """Check if the theme should be debugged
         We will debug the theme
         when we have a truish diazo.debug parameter in the request
-        '''
+        """
         if not getConfiguration().debug_mode:
             return False
-        diazo_debug = self.request.get('diazo.debug', '').lower()
-        return diazo_debug in ('1', 'y', 'yes', 't', 'true')
+        diazo_debug = self.request.get("diazo.debug", "").lower()
+        return diazo_debug in ("1", "y", "yes", "t", "true")
 
     def develop_theme(self):
-        ''' Check if the theme should be recompiled
+        """Check if the theme should be recompiled
         every time the transform is applied
-        '''
+        """
         if not getConfiguration().debug_mode:
             return False
         if self.debug_theme():
             return True
-        if environ.get('DIAZO_ALWAYS_CACHE_RULES'):
+        if environ.get("DIAZO_ALWAYS_CACHE_RULES"):
             return False
         return True
 
@@ -95,7 +88,7 @@ class UidLinkTransform(object):
                 absolutePrefix,
                 readNetwork,
                 parameterExpressions,
-                runtrace=runtrace
+                runtrace=runtrace,
             )
             if transform is None:
                 return None
@@ -109,13 +102,16 @@ class UidLinkTransform(object):
         return theming_policy(self.request).getSettings()
 
     def parseTree(self, result):
-        contentType = self.request.response.getHeader('Content-Type')
-        if contentType is None or not contentType.startswith('text/html'):
+        contentType = self.request.response.getHeader("Content-Type")
+        if contentType is None or not contentType.startswith("text/html"):
             return None
 
-        contentEncoding = self.request.response.getHeader('Content-Encoding')
-        if contentEncoding \
-           and contentEncoding in ('zip', 'deflate', 'compress',):
+        contentEncoding = self.request.response.getHeader("Content-Encoding")
+        if contentEncoding and contentEncoding in (
+            "zip",
+            "deflate",
+            "compress",
+        ):
             return None
 
         try:
@@ -140,19 +136,16 @@ class UidLinkTransform(object):
         return self.transformIterable([result], encoding)
 
     def transformIterable(self, result, encoding):
-        """Apply the transform if required
-        """
+        """Apply the transform if required"""
         if isinstance(result, XMLSerializer):
             root = result.tree.getroot()
-            for (element, attribute, link, pos) in root.iterlinks():
-                if 'resolveuid' in link:
-                    uuid_value = link.split('/')[-1]
+            for element, attribute, link, pos in root.iterlinks():
+                if "resolveuid" in link:
+                    uuid_value = link.split("/")[-1]
                     url = uuidToURL(uuid_value)
                     LOGGER.info("\n---")
                     LOGGER.info("link found in page: {}".format(link))
-                    LOGGER.info(
-                        "link extracted uuid_value: {}".format(uuid_value)
-                    )
+                    LOGGER.info("link extracted uuid_value: {}".format(uuid_value))
                     LOGGER.info("url: {}".format(url))
                     LOGGER.info("\n---")
                     if url:

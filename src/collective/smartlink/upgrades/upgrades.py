@@ -1,34 +1,34 @@
 # -*- coding: utf-8 -*-
 
-from plone.dexterity.interfaces import IDexterityFTI
-from zope.component import queryUtility
 from .remove_internal_link import fix_internal_link_field
 from plone import api
+from plone.dexterity.interfaces import IDexterityFTI
+from zope.component import queryUtility
 
 import logging
+
 
 logger = logging.getLogger(__name__)
 
 
-default_profile = 'profile-collective.smartlink:default'
+default_profile = "profile-collective.smartlink:default"
 
 
 def to_1100(context):
-    """
-    """
-    logger.info('Upgrading collective.smartlink to version 1100')
+    """ """
+    logger.info("Upgrading collective.smartlink to version 1100")
     fti = queryUtility(IDexterityFTI, name="Link", default=None)
     if not fti:
         return
 
-    logger.info('Changing model_file for Link type.')
-    fti._updateProperty('model_file', 'plone.app.contenttypes.schema:link.xml')
+    logger.info("Changing model_file for Link type.")
+    fti._updateProperty("model_file", "plone.app.contenttypes.schema:link.xml")
 
     fix_internal_link_field(context)
 
+
 def to_1200(context):
-    """
-    """
-    logger.info('Upgrading collective.smartlink to version 1200')
-    setup = api.portal.get_tool('portal_setup')
-    setup.runImportStepFromProfile(default_profile, 'typeinfo')
+    """ """
+    logger.info("Upgrading collective.smartlink to version 1200")
+    setup = api.portal.get_tool("portal_setup")
+    setup.runImportStepFromProfile(default_profile, "typeinfo")

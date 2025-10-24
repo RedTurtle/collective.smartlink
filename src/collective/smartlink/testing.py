@@ -18,7 +18,7 @@ class CollectiveSmartlinkLayer(PloneSandboxLayer):
         self.loadZCML(package=collective.smartlink)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.smartlink:default')
+        applyProfile(portal, "collective.smartlink:default")
 
 
 COLLECTIVE_SMARTLINK_FIXTURE = CollectiveSmartlinkLayer()
@@ -26,13 +26,13 @@ COLLECTIVE_SMARTLINK_FIXTURE = CollectiveSmartlinkLayer()
 
 COLLECTIVE_SMARTLINK_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_SMARTLINK_FIXTURE,),
-    name='CollectiveSmartlinkLayer:IntegrationTesting'
+    name="CollectiveSmartlinkLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_SMARTLINK_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_SMARTLINK_FIXTURE,),
-    name='CollectiveSmartlinkLayer:FunctionalTesting'
+    name="CollectiveSmartlinkLayer:FunctionalTesting",
 )
 
 
@@ -40,7 +40,7 @@ COLLECTIVE_SMARTLINK_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         COLLECTIVE_SMARTLINK_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveSmartlinkLayer:AcceptanceTesting'
+    name="CollectiveSmartlinkLayer:AcceptanceTesting",
 )

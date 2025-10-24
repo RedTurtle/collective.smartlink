@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
-from collective.smartlink import _
-from plone.app.contenttypes.interfaces import ILink
-from plone.app.z3cform.widget import RelatedItemsFieldWidget
-from plone.autoform import directives
-from plone.autoform.interfaces import IFormFieldProvider
-from plone.dexterity.interfaces import IDexterityContent
-from plone.namedfile.field import NamedBlobImage
-from plone.supermodel import model
-from z3c.relationfield.schema import RelationChoice
-from zope import schema
-from zope.component import adapter
-from zope.interface import implementer
+from collective.smartlink import _  # noqa
+from plone.app.contenttypes.interfaces import ILink  # noqa
+from plone.app.z3cform.widget import RelatedItemsFieldWidget  # noqa
+from plone.autoform import directives  # noqa
+from plone.autoform.interfaces import IFormFieldProvider  # noqa
+from plone.dexterity.interfaces import IDexterityContent  # noqa
+from plone.namedfile.field import NamedBlobImage  # noqa
+from plone.supermodel import model  # noqa
+from z3c.relationfield.schema import RelationChoice  # noqa
+from zope import schema  # noqa
+from zope.component import adapter  # noqa
+from zope.interface import implementer  # noqa
 from zope.interface import Interface
-from zope.interface import provider
+from zope.interface import provider  # noqa
 
 
 class ISmartLinkExtension(Interface):
-    """ Marker interface for Links.
-    """
+    """Marker interface for Links."""
