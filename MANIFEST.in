@@ -1,5 +1,19 @@
 graft src/collective
 graft docs
 include *.rst
+exclude tox.ini
+exclude *.txt
+exclude .gitlab-ci.yml
 global-exclude *.pyc
-global-exclude .DS_Store
+exclude .babelrc
+exclude .coveragerc
+exclude .gitignore copy
+exclude .isort.cfg
+exclude .prettierrc.json
+exclude .python-version
+exclude .stylelintrc.json
+exclude package-lock.json
+exclude package.json
+exclude postcss.config.js
+exclude test_plone61.cfg
+exclude webpack.config.js
