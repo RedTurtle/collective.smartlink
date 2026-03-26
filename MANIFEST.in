@@ -17,3 +17,5 @@ exclude package.json
 exclude postcss.config.js
 exclude test_plone61.cfg
 exclude webpack.config.js
+include base.cfg
+include travis.cfg
