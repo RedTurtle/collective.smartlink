@@ -6,23 +6,22 @@ from plone.api.content import get_uuid
 import logging
 import transaction
 
+
 logger = logging.getLogger(__name__)
 
 
 def fix_internal_link_field(context):
-    """ Parte della migrazione collective.smartlink to version 1100.
+    """Parte della migrazione collective.smartlink to version 1100.
     Serve per togliere il contenuto del campo 'internal_link' e metterlo
     nel campo standard 'remoteUrl'.
 
     Si spazzola tutti i link del sito che hanno un internal_link e li corregge.
     """
-    logger.info('Fixing the internal_link field for all the Link objects.')
+    logger.info("Fixing the internal_link field for all the Link objects.")
 
     site = api.portal.get()
     logger.info("Getting all the Link objects in the site...")
-    link_brains = site.portal_catalog.unrestrictedSearchResults(
-        portal_type=["Link"]
-    )
+    link_brains = site.portal_catalog.unrestrictedSearchResults(portal_type=["Link"])
 
     objects_changed = 0
     total_changed = 0
@@ -37,7 +36,7 @@ def fix_internal_link_field(context):
         # anche un link esterno.
         if link_obj.internal_link:
             logger.info(
-                '---Link: {} | points to: {}\n'.format(
+                "---Link: {} | points to: {}\n".format(
                     link_obj.absolute_url_path(), link_obj.internal_link.to_path
                 )
             )
@@ -47,12 +46,10 @@ def fix_internal_link_field(context):
             if linked_obj:
                 uuid = get_uuid(linked_obj)
             else:
-                uuid = u'notfound'
+                uuid = "notfound"
                 brokenlink.append(link_obj.absolute_url_path())
 
-            link_obj.remoteUrl = u'${}/resolveuid/{}'.format(
-                '{portal_url}', uuid
-            )
+            link_obj.remoteUrl = "${}/resolveuid/{}".format("{portal_url}", uuid)
             link_obj.internal_link = None
             link_obj.reindexObject(idxs=["remoteUrl"])
 
@@ -64,8 +61,8 @@ def fix_internal_link_field(context):
                     transaction.commit()
                     logger.info("Partial Commit: OK")
                 except Exception as e:
-                    logger.error(u"Error while committing transaction.")
-                    logger.error(u"{}".format(e))
+                    logger.error("Error while committing transaction.")
+                    logger.error("{}".format(e))
                 objects_changed = 0
     logger.info("Changed a total of {} Link objects".format(total_changed))
     if brokenlink:

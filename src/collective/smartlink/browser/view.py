@@ -2,24 +2,26 @@
 
 from collective.smartlink import _
 from plone import api
-from plone.app.contenttypes.browser.link_redirect_view import LinkRedirectView as Base  # noqa
-from plone.app.contenttypes.browser.link_redirect_view import NON_RESOLVABLE_URL_SCHEMES  # noqa
+from plone.app.contenttypes.browser.link_redirect_view import LinkRedirectView as Base
+from plone.app.contenttypes.browser.link_redirect_view import (  # noqa
+    NON_RESOLVABLE_URL_SCHEMES,
+)
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class LinkRedirectView(Base):
-    index = ViewPageTemplateFile('templates/link.pt')
+    index = ViewPageTemplateFile("templates/link.pt")
 
     def absolute_target_url(self):
         """Compute the absolute target URL."""
         url = self.url()
-        mtool = getToolByName(self.context, 'portal_membership')
-        can_edit = mtool.checkPermission('Modify portal content', self.context)
+        mtool = getToolByName(self.context, "portal_membership")
+        can_edit = mtool.checkPermission("Modify portal content", self.context)
 
-        if self.context.remoteUrl.startswith('$'):
+        if self.context.remoteUrl.startswith("$"):
             # searching for the linked object
-            obj = api.content.get(UID=url.split('/')[-1])
+            obj = api.content.get(UID=url.split("/")[-1])
 
             if obj:
                 return obj.absolute_url()
@@ -31,7 +33,7 @@ class LinkRedirectView(Base):
                     api.portal.show_message(
                         message=_("link_not_found"),
                         request=self.request,
-                        type='warning'
+                        type="warning",
                     )
                     return self.request.response.redirect(
                         api.portal.get().absolute_url()

@@ -5,8 +5,10 @@ IT'S HERE JUST TO PREVENT UNWANTED ERRORS WHILE UPGRADING FROM THE PREVIOUS
 VERSION!
 TODO
 """
-import logging
 from zope.i18nmessageid import MessageFactory
 
-_ = MessageFactory('collective.smartlink')
+import logging
+
+
+_ = MessageFactory("collective.smartlink")
 logger = logging.getLogger(__name__)
