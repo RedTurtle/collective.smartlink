@@ -5,7 +5,7 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Plone 6 compatibility.
+- Plone 6 compatibility. Use 1.x tags for Plone < 6. [cekk]
   [cekk]
 
 1.1.0 (2020-03-06)
